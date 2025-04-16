@@ -1,0 +1,49 @@
+<div class="profile-container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title mb-4">My Profile</h2>
+            <form ng-submit="updateProfile()">
+                <div class="row">
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="profile-image-container">
+                            <img ng-src="{{user.profileImage || '../assets/images/default-profile.png'}}" 
+                                 class="rounded-circle profile-image" alt="Profile Picture">
+                            <div class="mt-2">
+                                <label class="btn btn-outline-primary btn-sm">
+                                    Change Photo
+                                    <input type="file" accept="image/*" class="d-none" ng-model="newProfileImage">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" ng-model="user.fullName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" ng-model="user.email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Bio</label>
+                            <textarea class="form-control" rows="3" ng-model="user.bio"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Cooking Experience Level</label>
+                            <select class="form-select" ng-model="user.experienceLevel">
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                                <option value="professional">Professional</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

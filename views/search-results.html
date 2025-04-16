@@ -1,0 +1,141 @@
+<div class="search-results-container">
+    <!-- Search Header -->
+    <div class="search-header mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="searchQuery" 
+                                   placeholder="Search recipes, ingredients, or cuisines...">
+                            <button class="btn btn-primary" ng-click="search()">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select" ng-model="sortBy">
+                            <option value="relevance">Most Relevant</option>
+                            <option value="recent">Most Recent</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters Sidebar -->
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card filters-card">
+                <div class="card-body">
+                    <h5 class="card-title">Filters</h5>
+                    
+                    <!-- Cuisine Filter -->
+                    <div class="mb-3">
+                        <h6>Cuisine</h6>
+                        <div class="form-check" ng-repeat="cuisine in cuisines">
+                            <input class="form-check-input" type="checkbox" 
+                                   ng-model="filters.cuisines[cuisine]" id="cuisine-{{cuisine}}">
+                            <label class="form-check-label" for="cuisine-{{cuisine}}">
+                                {{cuisine}}
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Cooking Time Filter -->
+                    <div class="mb-3">
+                        <h6>Cooking Time</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" ng-model="filters.cookingTime" 
+                                   value="under30" id="time-30">
+                            <label class="form-check-label" for="time-30">Under 30 mins</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" ng-model="filters.cookingTime" 
+                                   value="30to60" id="time-60">
+                            <label class="form-check-label" for="time-60">30-60 mins</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" ng-model="filters.cookingTime" 
+                                   value="over60" id="time-over60">
+                            <label class="form-check-label" for="time-over60">Over 60 mins</label>
+                        </div>
+                    </div>
+
+                    <!-- Difficulty Filter -->
+                    <div class="mb-3">
+                        <h6>Difficulty Level</h6>
+                        <select class="form-select" ng-model="filters.difficulty">
+                            <option value="">All Levels</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-outline-primary w-100" ng-click="applyFilters()">
+                        Apply Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Results -->
+        <div class="col-md-9">
+            <div class="search-results">
+                <h4>{{searchResults.length}} Results for "{{searchQuery}}"</h4>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4" ng-repeat="recipe in searchResults">
+                        <div class="card h-100">
+                            <img ng-src="{{recipe.image}}" class="card-img-top" alt="{{recipe.title}}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{recipe.title}}</h5>
+                                <p class="card-text">{{recipe.description | limitTo: 100}}...</p>
+                                <div class="recipe-meta mb-2">
+                                    <span class="badge bg-light text-dark me-2">
+                                        <i class="fas fa-clock"></i> {{recipe.totalTime}} min
+                                    </span>
+                                    <span class="badge bg-light text-dark me-2">
+                                        <i class="fas fa-signal"></i> {{recipe.difficulty}}
+                                    </span>
+                                    <span class="badge bg-light text-dark">
+                                        <i class="fas fa-globe"></i> {{recipe.cuisine}}
+                                    </span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="rating">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <span>{{recipe.rating}} ({{recipe.reviewCount}})</span>
+                                    </div>
+                                    <a href="#!/recipes/{{recipe.id}}" class="btn btn-outline-primary btn-sm">
+                                        View Recipe
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Search results pages">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" ng-class="{disabled: currentPage === 1}">
+                            <a class="page-link" href="#" ng-click="changePage(currentPage - 1)">Previous</a>
+                        </li>
+                        <li class="page-item" ng-repeat="page in pages" 
+                            ng-class="{active: page === currentPage}">
+                            <a class="page-link" href="#" ng-click="changePage(page)">{{page}}</a>
+                        </li>
+                        <li class="page-item" ng-class="{disabled: currentPage === totalPages}">
+                            <a class="page-link" href="#" ng-click="changePage(currentPage + 1)">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div> 

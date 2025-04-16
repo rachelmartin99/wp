@@ -1,0 +1,172 @@
+/* Add Recipe Page Styles */
+.add-recipe-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.add-recipe-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.add-recipe-header h2 {
+    color: #333;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.recipe-form .form-group {
+    margin-bottom: 25px;
+}
+
+.recipe-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.recipe-form .form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.recipe-form textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.recipe-form .form-control:focus {
+    border-color: #fd7e14;
+    box-shadow: 0 0 0 0.2rem rgba(253, 126, 20, 0.25);
+    outline: none;
+}
+
+.ingredients-section,
+.instructions-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.ingredient-item,
+.instruction-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: start;
+}
+
+.ingredient-item input,
+.instruction-item textarea {
+    flex: 1;
+}
+
+.btn-add-item {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add-item:hover {
+    background-color: #218838;
+}
+
+.btn-remove-item {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-remove-item:hover {
+    background-color: #c82333;
+}
+
+.image-preview {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit-recipe {
+    width: 100%;
+    padding: 15px;
+    background-color: #fd7e14;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+}
+
+.btn-submit-recipe:hover {
+    background-color: #e86e0c;
+}
+
+.difficulty-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #555;
+}
+
+.cooking-time-input {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.cooking-time-input input {
+    width: 120px;
+}
+
+.cooking-time-input span {
+    color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .add-recipe-container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .ingredient-item,
+    .instruction-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-remove-item {
+        align-self: flex-end;
+    }
+} 
